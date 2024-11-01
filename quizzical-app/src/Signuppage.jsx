@@ -1,49 +1,50 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-const Loginpage = () => {
+const Signuppage = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-
-  const goToSignupPage = () => {
-    navigate("/signup-page");
-  };
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
+  const goToQuestionsPage = () => {
+    navigate("/questions-page");
+  };
+  const goToLoginPage = () => {
+    navigate("/login-page");
+  };
   return (
     <div className="login-page">
       <h2>Quizzical</h2>
       <div className="login-form-container">
-        <h3>Login</h3>
+        <h3>Sign up</h3>
         <form className="login-form">
           <div>
             <label>Username: </label>
-            <input type="text" required />
+            <input type="text" />
           </div>
           <div className="password-field">
             <label>Password: </label>
-            <input type={showPassword ? "text" : "password"} required />
+            <input type={showPassword ? "text" : "password"}/>
           </div>
           <div className="check-box">
             <input type="checkbox" onChange={togglePasswordVisibility} />
             <label></label>
           </div>
           <div className="submit-btn">
-            <input type="submit"></input>
-            <button className="signup-re-btn" onClick={goToSignupPage}>
-              Don't have an account?
+            <input onClick={goToQuestionsPage} type="submit"></input>
+            <button onClick={goToLoginPage} className="signup-re-btn" >
+              Already have an account?
               <br></br>
-              Sign up here
+              Login here
             </button>
           </div>
         </form>
-        <div className="acc-btn"> </div>
       </div>
     </div>
   );
 };
 
-export default Loginpage;
+export default Signuppage;
